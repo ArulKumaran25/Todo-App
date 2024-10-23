@@ -1,6 +1,7 @@
 h1{
     text-align:center ;
     font-size: 2rem;
+    padding: 3%;
 
 }
 
@@ -11,3 +12,12 @@ h1{
 #myCheckbox{
     margin-left: 30px;
 }
+
+#task{
+    padding: 2%;
+}
+
+.tasktitle {
+    margin-bottom: 10px;
+    font-weight: bold; 
+  }
