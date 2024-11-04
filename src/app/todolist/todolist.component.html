@@ -1,4 +1,13 @@
-<div class="container">
+
+<div [ngClass]="[ mode ? 'light-mode' : 'dark-mode', 'container'] ">
+
+  
+  <hr>
+  <button (click)="toggleDarkMode()" class="btn btn-secondary">
+    {{!mode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}}
+
+  </button>
+  <hr>
    
   <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
   
@@ -9,6 +18,7 @@
       <div class="form-group">
   
         <label class="tasktitle" for="task">Task</label>
+        <br><br>
   
         <input 
           type="text" 
@@ -20,6 +30,8 @@
   
         <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Required field</small>
       </div>
+
+      <br>
      
       <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Submit</button>
   </form>
@@ -43,7 +55,7 @@
 
   <hr>
 
-  <table class="table"> 
+  <table class="table" border="2"> 
       <thead>
           <tr>
               <th scope="col">Tasks Added</th>

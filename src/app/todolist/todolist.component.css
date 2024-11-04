@@ -1,68 +1,14 @@
-h1{
-    text-align:center ;
-    font-size: 2rem;
-    padding: 3%;
 
+
+.light-mode{
+    background-color: #f8f9fa; /* Light background */
+    transition: 0.3s ease-in;
 }
 
-#submitButton{
-    margin-top: 20px;
+/* Dark Mode Styles */
+ .dark-mode{
+    background-color: #121212;
+    color: white;
+    transition: 0.3s ease-in;
 }
 
-#myCheckbox{
-    margin-left: 30px;
-}
-
-#task{
-    padding: 2%;
-}
-
-.tasktitle {
-    margin-bottom: 10px;
-    font-weight: bold; 
-  }
-
-
-
-.container {
-    margin-top: 50px;
-    background-color: black; /* Change the background color to black */
-    color: white; /* Set text color to white for better contrast */
-    padding: 50px; /* Add some padding for spacing */
-    border-radius: 8px; /* Optional: Add rounded corners */
-}
-
-.form-group label {
-    color: white; /* Change label color to white */
-}
-
-.form-control {
-    background-color: #333; /* Darker background for input fields */
-    color: white; /* White text for input fields */
-}
-
-.form-control::placeholder {
-    color: #bbb; /* Placeholder text color */
-}
-
-.table {
-    background-color: #222; /* Darker background for table */
-    color: white; /* White text for table */
-}
-
-.table th, .table td {
-    border: 1px solid #444; /* Optional: Add border color for table cells */
-}
-
-.btn-primary {
-    background-color: #007bff; /* Customize button color */
-    border-color: #007bff; /* Customize button border */
-}
-
-.btn-danger {
-    background-color: #dc3545; /* Customize delete button color */
-    border-color: #dc3545; /* Customize delete button border */
-}
-
-
-  

@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+.light-mode{
+    transition: 0.3s ease-in;
+    background-color: #f8f9fa; /* Light background */
+}
+
+/* Dark Mode Styles */
+ .dark-mode{
+    transition: 0.3s ease-in;
+    background-color: #121212;
+    color: white;
+}

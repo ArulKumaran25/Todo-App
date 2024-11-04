@@ -10,6 +10,7 @@ export class TodolistComponent {
 
   taskArray=[{taskName:'Task 1', isCompleted:false}]
   searchTerm:string='';
+  isDarkMode=false;
 
   onSubmit(form:NgForm){
     console.log(form);
@@ -44,5 +45,18 @@ export class TodolistComponent {
     )
   }
 
+  mode : boolean = true;
+  
+  toggleDarkMode(){
+    this.mode = !this.mode;
+    if(this.mode){
+      document.body.classList.remove('dark-mode');
+      document.body.classList.add('light-mode');
+    }
+    else{
+      document.body.classList.remove('light-mode');
+      document.body.classList.add('dark-mode');
+    }
+  }
 
 }
