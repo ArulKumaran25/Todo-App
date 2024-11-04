@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 export class TodolistComponent {
 
   taskArray=[{taskName:'Task 1', isCompleted:false}]
+  searchTerm:string='';
 
   onSubmit(form:NgForm){
     console.log(form);
@@ -19,23 +20,29 @@ export class TodolistComponent {
     })
 
     form.reset();
-    
 
   }
-
   onDelete(index:number){
       console.log(index);
 
-      this.taskArray.splice(index,1);
-      
+      this.taskArray.splice(index,1); 
   }
 
   onCheck(index:number){
     console.log(this.taskArray);
 
-
     this.taskArray[index].isCompleted=!this.taskArray[index].isCompleted;
     
   }
+
+  filteredTasks(){
+    if(!this.searchTerm){
+      return this.taskArray;
+    }
+    return this.taskArray.filter(task=>
+      task.taskName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    )
+  }
+
 
 }
