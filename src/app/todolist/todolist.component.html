@@ -1,6 +1,5 @@
 <div class="container">
    
-   
   <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
   
       <h1>To-Do Application</h1>
@@ -12,23 +11,39 @@
         <label class="tasktitle" for="task">Task</label>
   
         <input 
-        type="text" 
-        class="form-control" 
-        id="task" 
-        placeholder="Enter your tasks" 
-        ngModel name="task"
-        required>
+          type="text" 
+          class="form-control" 
+          id="task" 
+          placeholder="Enter your tasks" 
+          ngModel name="task"
+          required>
   
-        <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger" >Required field</small>
+        <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Required field</small>
       </div>
      
       <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Submit</button>
-    </form>
+  </form>
     
+  <hr>
   
-    <hr>
-  
-    <table class="table">
+  <!-- Search Input Field -->
+  <div class="form-group">
+    <label for="search">Search Tasks:</label>
+
+    <br><br>
+    
+
+    <input 
+      type="text" 
+      class="form-control" 
+      id="search" 
+      [(ngModel)]="searchTerm" 
+      placeholder="Search for a task">
+  </div>
+
+  <hr>
+
+  <table class="table"> 
       <thead>
           <tr>
               <th scope="col">Tasks Added</th>
@@ -37,13 +52,11 @@
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let t of taskArray; index as i ">
+          <tr *ngFor="let t of filteredTasks(); index as i">
               <td>{{t.taskName}}</td>
               <td><input (change)="onCheck(i)" id="myCheckbox" type="checkbox"></td>
               <td><button class="btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button></td>
           </tr>
       </tbody>
-    </table>
-  
-  
-  </div>
+  </table>
+</div>
