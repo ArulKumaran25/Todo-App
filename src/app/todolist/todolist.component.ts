@@ -59,4 +59,12 @@ export class TodolistComponent {
     }
   }
 
+  get totalTasks(){
+    return this.taskArray.length;
+  }
+
+  get completedTasks(){
+    return this.taskArray.filter(task=>task.isCompleted).length;
+  }
+
 }

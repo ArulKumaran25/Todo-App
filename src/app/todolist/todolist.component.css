@@ -12,3 +12,13 @@
     transition: 0.3s ease-in;
 }
 
+.table{
+    border-collapse: separate; 
+    border-spacing: 0; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 40px;
+    
+}
