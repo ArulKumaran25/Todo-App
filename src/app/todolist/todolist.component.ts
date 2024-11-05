@@ -45,6 +45,8 @@ export class TodolistComponent {
     )
   }
 
+
+// toggle Dark mode
   mode : boolean = true;
   
   toggleDarkMode(){
@@ -59,12 +61,29 @@ export class TodolistComponent {
     }
   }
 
-  get totalTasks(){
+
+//Show Task Count
+  get totalTasks(){ 
     return this.taskArray.length;
   }
 
   get completedTasks(){
     return this.taskArray.filter(task=>task.isCompleted).length;
   }
+
+
+  // Edit task functionality
+  editIndex:number|null=null;
+
+  startEditing(index:number){
+    this.editIndex=index;
+  }
+
+  saveEdit(index:number , newName:string){
+    this.taskArray[index].taskName=newName;
+    this.editIndex=null;
+  }
+
+
 
 }
