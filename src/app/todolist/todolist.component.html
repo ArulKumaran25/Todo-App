@@ -1,54 +1,42 @@
-
 <div [ngClass]="[ mode ? 'light-mode' : 'dark-mode', 'container'] ">
-
   
   <hr>
   <button (click)="toggleDarkMode()" class="btn btn-secondary">
     {{!mode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}}
-
   </button>
   <hr>
-   
-  <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
-  
-      <h1>To-Do Application</h1>
-      <br>
 
-      <p>Total Tasks : {{totalTasks}}</p>
-      <p>Completed tasks : {{completedTasks}}</p>
-  
-      <hr>
-  
-      <div class="form-group">
-  
-        <label class="tasktitle" for="task">Task</label>
-        <br><br>
-  
-        <input 
-          type="text" 
-          class="form-control" 
-          id="task" 
-          placeholder="Enter your tasks" 
-          ngModel name="task"
-          required>
-  
-        <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Required field</small>
-      </div>
+  <h1>To-Do Application</h1>
 
-      <br>
-     
-      <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Submit</button>
-  </form>
-    
+  <!-- Task Count Display -->
+  <p>Total Tasks: {{ totalTasks }}</p>
+  <p>Completed Tasks: {{ completedTasks }}</p>
+
   <hr>
-  
+
+  <form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+    <div class="form-group">
+      <label class="tasktitle" for="task">Task</label>
+      <br><br>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="task" 
+        placeholder="Enter your tasks" 
+        ngModel name="task"
+        required>
+      <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Required field</small>
+    </div>
+    <br>
+    <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <hr>
+
   <!-- Search Input Field -->
   <div class="form-group">
     <label for="search">Search Tasks:</label>
-
     <br><br>
-    
-
     <input 
       type="text" 
       class="form-control" 
@@ -65,17 +53,25 @@
               <th scope="col">Tasks Added</th>
               <th scope="col">Completed</th>
               <th scope="col">Remove Task</th>
+              <th scope="col">Edit Task</th>  <!-- Added Edit column header -->
           </tr>
       </thead>
       <tbody>
-        
           <tr *ngFor="let t of filteredTasks(); index as i">
-              <td>{{t.taskName}}</td>
-              <td><input (change)="onCheck(i)" id="myCheckbox" type="checkbox"></td>
-              <td><button class="btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button></td>
+              <td *ngIf="editIndex !== i">{{ t.taskName }}</td>
+              <td *ngIf="editIndex === i">
+                  <input [(ngModel)]="t.taskName" (blur)="saveEdit(i, t.taskName)" />
+              </td>
+              <td>
+                  <input type="checkbox" (change)="onCheck(i)" />
+              </td>
+              <td>
+                  <button class="btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button>
+              </td>
+              <td>
+                  <button *ngIf="editIndex !== i" (click)="startEditing(i)">Edit</button>
+              </td>
           </tr>
-
-          
       </tbody>
   </table>
 </div>
