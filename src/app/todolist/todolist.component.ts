@@ -84,6 +84,18 @@ export class TodolistComponent {
     this.editIndex=null;
   }
 
+  //clear all button
+
+  clearAllTasks(){
+    this.taskArray=[];
+  }
+
+  // //all as completed
+
+  // markAllCompleted(){
+  //   this.taskArray.forEach(task=>task.isCompleted=true);
+  // }
+
 
 
 }

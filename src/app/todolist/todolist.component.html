@@ -28,12 +28,21 @@
       <small *ngIf="taskForm.invalid && taskForm.dirty" id="errorMessage" class="form-text text-danger">Required field</small>
     </div>
     <br>
-    <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+
+    <div class="d-flex">
+      <button [disabled]="taskForm.invalid" id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+      <button (click)="clearAllTasks()" class="btn btn-danger button-spacing" style="margin-left: 20px;">Clear All</button>
+      <!-- <button (click)="markAllCompleted()" class="btn btn-success button-spacing" style="margin-left: 20px;" >Mark All as Completed</button> -->
+
+    </div>
+    
   </form>
 
   <hr>
 
-  <!-- Search Input Field -->
+ 
+
+  <!-- Search Input  Field -->
   <div class="form-group">
     <label for="search">Search Tasks:</label>
     <br><br>
